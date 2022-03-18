@@ -1,6 +1,6 @@
 # Directories
-bin/
-bin-int/
+bin
+bin-obj
 
 # Files
 *.user

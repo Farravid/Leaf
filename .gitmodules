@@ -1,0 +1,7 @@
+[submodule "Leaf/vendor/imgui"]
+	path = Leaf/vendor/imgui
+	url = https://github.com/Farravid/imgui
+	branch = docking
+[submodule "Leaf/vendor/glfw"]
+	path = Leaf/vendor/glfw
+	url = https://github.com/Farravid/glfw
