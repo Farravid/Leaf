@@ -17,7 +17,8 @@ project "LeafGame"
 	includedirs
 	{
 		"src",
-		"%{wks.location}/Leaf/src"
+		"%{wks.location}/Leaf/src",
+		"%{wks.location}/Leaf/src/Leaf"
 	}
 
 	links

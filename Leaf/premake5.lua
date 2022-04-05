@@ -7,8 +7,9 @@ project "Leaf"
 	targetdir   ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
 	objdir      ("%{wks.location}/bin-obj/" .. outputdir .. "/%{prj.name}")
 
-	--pchheader "ogpch.h"
-	--pchsource "src/ogpch.cpp"
+	pchheader "lfpch.hpp"
+	pchsource "src/lfpch.cpp"
+	
 	files
 	{
 		"src/**.hpp",
@@ -19,6 +20,7 @@ project "Leaf"
 	includedirs
 	{
 		"src",
+		"src/Leaf",
 		"%{IncludeDir.glfw}",
 		"%{IncludeDir.imgui}"
 	}
