@@ -17,7 +17,7 @@
 #pragma once
 
 #include "ComponentStorage.hpp"
-#include "Entity/BaseEntity.hpp"
+#include "ECS/Entity/BaseEntity.hpp"
 
 namespace Leaf::ecs
 {

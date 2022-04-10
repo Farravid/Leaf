@@ -18,7 +18,8 @@ project "LeafGame"
 	{
 		"src",
 		"%{wks.location}/Leaf/src",
-		"%{wks.location}/Leaf/src/Leaf"
+		"%{wks.location}/Leaf/src/Leaf",
+		"%{IncludeDir.spdlog}"
 	}
 
 	links
@@ -27,11 +28,11 @@ project "LeafGame"
 	}
 
 filter "configurations:Debug"
-	defines "OG_DEBUG"
+	defines "LF_DEBUG"
 	runtime "Debug"
 	symbols "on"
 
 filter "configurations:Release"
-	defines "OG_RELEASE"
+	defines "LF_RELEASE"
 	runtime "Release"
 	optimize "full"

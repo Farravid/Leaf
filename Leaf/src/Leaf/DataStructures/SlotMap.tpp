@@ -1,7 +1,4 @@
-#include "Debug/Assertion.hpp"
-
-//-------------------------------------------------------------------------
-//-------------------------------------------------------------------------
+#include "Utility/Log/Log.hpp"
 
 namespace Leaf::DataStructures
 {
@@ -39,7 +36,7 @@ namespace Leaf::DataStructures
 	constexpr void 
 	SlotMap<DATA_T, INDEX_T, Capacity>::free(key_type p_key) noexcept
 	{
-		OG_ENGINE_ASSERT(is_valid(p_key), "Invalid Key to free!");
+		//LF_ENGINE_ASSERT(is_valid(p_key), "Invalid Key to free!");
 
 			//Free the memory of the slots_ position
 			auto& slot = slots_[p_key.id];
@@ -95,7 +92,7 @@ namespace Leaf::DataStructures
 	SlotMap<DATA_T, INDEX_T, Capacity>::allocate()
 	{
 		//1.- Check if there are free slots
-		OG_ENGINE_ASSERT_BREAK(freelist_ < Capacity, "Error. Wrong control of freelist_");
+		////LF_ENGINE_ASSERT_BREAK(freelist_ < Capacity, "Error. Wrong control of freelist_");
 
 		//2.- Reserve the next free slot & update the freelist_ value
 		auto slot_pos = freelist_;
@@ -182,7 +179,7 @@ namespace Leaf::DataStructures
 	SlotMap<DATA_T, INDEX_T, Capacity>::operator[](const key_type p_key) noexcept
 	{
 		//TODO: [Anto] Cuando haya tiempo, implementar la version cosnt y no const bien , sin repetir el codigo.--> PREGUNTAR A FRAN
-		OG_ENGINE_ASSERT_BREAK(is_valid(p_key), "Invalid Key! Trying to access an invalid position...");
+		//LF_ENGINE_ASSERT_BREAK(is_valid(p_key), "Invalid Key! Trying to access an invalid position...");
 		return data_[slots_[p_key.id].id];
 	}
 
@@ -193,7 +190,7 @@ namespace Leaf::DataStructures
 	constexpr typename SlotMap<DATA_T, INDEX_T, Capacity>::value_type const&
 	SlotMap<DATA_T, INDEX_T, Capacity>::operator[](const key_type p_key) const noexcept
 	{	
-		OG_ENGINE_ASSERT_BREAK(is_valid(p_key), "Invalid Key! Trying to access an invalid position...");
+		//LF_ENGINE_ASSERT_BREAK(is_valid(p_key), "Invalid Key! Trying to access an invalid position...");
 		return data_[slots_[p_key.id].id];
 	}
 

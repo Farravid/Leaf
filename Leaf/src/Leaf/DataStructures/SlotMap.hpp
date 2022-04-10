@@ -11,9 +11,6 @@
 
 #pragma once
 
-#include <Utility/TypeAliases.hpp>
-#include <Ocacho/Debug/Log/Log.hpp>
-
 namespace Leaf::DataStructures
 {
 	template<typename DATA_T, typename INDEX_T = uint32_t, size_t Capacity = 100>

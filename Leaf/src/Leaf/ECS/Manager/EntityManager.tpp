@@ -1,5 +1,4 @@
-#include "Debug/Log/Log.hpp"
-#include "Debug/Assertion.hpp"
+#include "Utility/Log/Log.hpp"
 
 struct NameDebugComponent;
 
@@ -174,14 +173,14 @@ namespace Leaf::ecs
 	EntityManager<CmpsList,SingletonCmpsList,TagsList,Capacity>::
 	getEntityByID_impl(auto* self, const std::size_t p_id) noexcept
 	{
-		OG_ENGINE_ASSERT_BREAK(self->entities_.size(), "There are no entities!");
+		//LF_ENGINE_ASSERT_BREAK(self->entities_.size(), "There are no entities!");
 
 		decltype(&self->entities_[0]) result { nullptr };
 
 		for(auto& entity : self->entities_)
 			if(entity.getID() == p_id) return &entity;
 
-		OG_ENGINE_LOG_ERROR(LOG_SIMPLE_OUTPUT,"There is no entity with the given ID {0}", p_id);
+		LF_ENGINE_LOG_ERROR("There is no entity with the given ID {0}", p_id);
 		return result;
 	}
 
@@ -192,7 +191,7 @@ namespace Leaf::ecs
 	EntityManager<CmpsList,SingletonCmpsList,TagsList,Capacity>::
 	getEntityByName_impl(auto* self, const std::string_view& p_name) noexcept
 	{
-		OG_ENGINE_ASSERT_BREAK(self->entities_.size(), "There are no entities!");
+		//LF_ENGINE_ASSERT_BREAK(self->entities_.size(), "There are no entities!");
 
 		decltype(&self->entities_[0]) result { nullptr };
 
@@ -205,7 +204,7 @@ namespace Leaf::ecs
 			}
 		}
 
-		OG_ENGINE_LOG_ERROR(LOG_SIMPLE_OUTPUT,"There is no entity with the given name {0}", p_name.data());
+		LF_ENGINE_LOG_ERROR("There is no entity with the given name {0}", p_name.data());
 		return result;
 	}
 
@@ -220,8 +219,7 @@ namespace Leaf::ecs
 	{
 		if(containsComponents<CMP>(p_entity))
 		{
-			OG_ENGINE_LOG_WARN(LOG_EXTENDED_OUTPUT,
-							   "Trying to add a duplicate component. Returning the existing component");
+			LF_ENGINE_LOG_WARN("Trying to add a duplicate component. Returning the existing component");
 
 			return getComponent<CMP>(p_entity);
 		}
@@ -242,8 +240,8 @@ namespace Leaf::ecs
 	EntityManager<CmpsList,SingletonCmpsList,TagsList,Capacity>::
 	removeComponent(Entity_t& p_entity) noexcept
 	{
-		OG_ENGINE_ASSERT_BREAK(containsComponents<CMP>(p_entity),
-							   "Trying to remove a non-valid component from the entity");
+		//LF_ENGINE_ASSERT_BREAK(containsComponents<CMP>(p_entity),
+		//					   "Trying to remove a non-valid component from the entity");
 
 		callResetIfPresent(&getComponent<CMP>(p_entity));
 
@@ -263,8 +261,8 @@ namespace Leaf::ecs
 	EntityManager<CmpsList,SingletonCmpsList,TagsList,Capacity>::
 	getComponent_impl(auto* self, const Entity_t& p_entity) noexcept
 	{
-		OG_ENGINE_ASSERT_BREAK(self->template containsComponents<CMP>(p_entity),
-							   "Trying to get a non valid component from an entity");
+		//LF_ENGINE_ASSERT_BREAK(self->template containsComponents<CMP>(p_entity),
+		//					   "Trying to get a non valid component from an entity");
 
 		auto slotKey = p_entity.template getComponent<CMP>();
 		
@@ -489,7 +487,7 @@ namespace Leaf::ecs
 	EntityManager<CmpsList,SingletonCmpsList,TagsList,Capacity>::
 	copyEntity(Entity_t& p_entity) noexcept
 	{
-		OG_ENGINE_ASSERT_BREAK(getEntityByID(p_entity.getID()),"Trying to copy a non valid entity!");
+		//LF_ENGINE_ASSERT_BREAK(getEntityByID(p_entity.getID()),"Trying to copy a non valid entity!");
 
 		auto newEntityName = getComponent<NameDebugComponent>(p_entity).name + "_copy";
 		auto& newEntity = createEntity();

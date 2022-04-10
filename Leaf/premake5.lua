@@ -22,7 +22,8 @@ project "Leaf"
 		"src",
 		"src/Leaf",
 		"%{IncludeDir.glfw}",
-		"%{IncludeDir.imgui}"
+		"%{IncludeDir.imgui}",
+		"%{IncludeDir.spdlog}"
 	}
 
 	links
@@ -32,11 +33,11 @@ project "Leaf"
 	}
 
 filter "configurations:Debug"
-	defines "OG_DEBUG"
+	defines "LF_DEBUG"
 	runtime "Debug"
 	symbols "on"
 
 filter "configurations:Release"
-	defines "OG_RELEASE"
+	defines "LF_RELEASE"
 	runtime "Release"
 	optimize "full"

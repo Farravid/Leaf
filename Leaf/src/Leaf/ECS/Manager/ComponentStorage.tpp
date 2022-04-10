@@ -70,6 +70,7 @@ namespace Leaf::ecs
 	ComponentStorage<CmpsList,SingletonCmpsList,Capacity>::
 	clearStorage() noexcept
 	{
-		( std::get< StorageType<CmpsList> >(components_).clear(), ...);
+		//TODO: Que pasa aqui nene
+		//( std::get< StorageType<CmpsList> >(components_).clear(), ...);
 	}
 }

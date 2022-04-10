@@ -28,7 +28,7 @@ namespace Leaf::ecs
 	{
 		public:
 			template<typename CL, typename SCL, typename TL, size_t C>
-			friend class EntityManager;
+			friend struct EntityManager;
 
 		private:
 			//=========================================================================
