@@ -16,13 +16,14 @@
 #include "lfpch.hpp"
 
 #include "Metaprogramming/Metaprogramming.hpp"
+#include "Core/Functionality/NonCopyable.hpp"
 #include "DataStructures/SlotMap.hpp"
 #include "Macros/ClassesMacros.hpp"
 
 namespace Leaf::ecs
 {
 	template <typename CmpsList, typename SingletonCmpsList, std::size_t Capacity>
-	struct ComponentStorage
+	struct ComponentStorage : NonCopyable
 	{
 		//=========================================================================
 		// Type list info
@@ -70,9 +71,6 @@ namespace Leaf::ecs
              * @brief Create a Component Storage 
              */
 			explicit constexpr ComponentStorage() = default;
-
-			//Making this class non copiable
-			NON_COPIABLE_CLASS(ComponentStorage)
 			
 			/**
 			 * @brief Given a CMP type and the Constructor params to build it.

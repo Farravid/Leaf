@@ -27,7 +27,7 @@ namespace Leaf::ecs
 			 * @param p_frameRate Frame rate of the system
 			 * @param p_name Name of the system
 			 */
-			explicit SystemBase(const int p_frameRate, const std::string_view& p_name) noexcept;
+			explicit SystemBase(const uint8_t p_frameRate, const std::string_view& p_name) noexcept;
 
 			//CRTP inheritance
 			friend CRTPType;
@@ -42,7 +42,7 @@ namespace Leaf::ecs
 
 		public:
 			//Frame rate of each system
-			int frameRate_;
+			uint8_t frameRate_;
 			//Name of each system
 			std::string name_{};
 			//Whether the system is active to loop or not
