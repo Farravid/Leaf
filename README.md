@@ -1,6 +1,6 @@
 # Leaf - [![License](https://img.shields.io/github/license/Farravid/Leaf.svg)](https://github.com/Farravid/Leaf/blob/main/LICENSE)
 
-Leaf is a cross-compiling data oriented engine developed in my spare time in order to improve my skills and knowledge about game engine architectures.
+Leaf is a cross-building data oriented engine developed in my spare time in order to improve my skills and knowledge about game engine architectures.
 
 It's written in modern C++20.
 
