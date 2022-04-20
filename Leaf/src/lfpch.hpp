@@ -1,5 +1,5 @@
 /**
- * @file ogpch.hpp
+ * @file lfpch.hpp
  * @author David (davidmg103@gmail.com)
  * @brief This is the precompiled header used by the core engine.
  * 
@@ -30,7 +30,6 @@
 #include <cstdint>
 #include <cstring>
 #include <string>
-#include <string.h>
 #include <string_view>
 #include <fstream>
 #include <sstream>
@@ -53,6 +52,9 @@
 #include <type_traits>
 #include <stdexcept>
 
+#include <cassert>
+
+#include <concepts>
 
 #ifdef OG_WINDOWS
 #else

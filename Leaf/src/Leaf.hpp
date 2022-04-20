@@ -1,7 +1,7 @@
 /**
  * @file Ocacho.hpp
- * @author OcachoGames-David (ocachogames@gmail.com)
- * @brief This is the header file containing all the basic includes from the OcachoEngine
+ * @author David (davidmg103@gmail.com)
+ * @brief This is the header file containing all the basic includes from the LeafEngine
  * 
  * @version 0.1
  * @date 2021-12-08

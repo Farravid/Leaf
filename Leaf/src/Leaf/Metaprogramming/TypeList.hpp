@@ -1,6 +1,6 @@
 /**
  * @file TypeList.hpp
- * @author OcachoGames-David ( ocachogames@gmai.com)
+ * @author David (davidmg103@gmail.com)
  * @brief Metaprogramming functions for List of Types.
  * @version 0.1
  * @date 2022-02-14
@@ -33,22 +33,6 @@ namespace Leaf::mp
 		: constant<std::size_t, (1 + pos_type<Type,Types...>::value)> {};
 	template<typename Type, typename... Types>
 	constexpr std::size_t pos_type_v = pos_type<Type,Types...>::value;
-
-	/**
-	 * @brief Select the better storage type for masks (uint8_t,uint16_t)... given a typelist.
-	 * 
-	 * @tparam TypeList  
-	 */
-	template<typename TypeList>
-	struct select_storage_type
-	{
-		using type = if_condition_type_t<(TypeList::size() <= 8), uint8_t, 
-						if_condition_type_t<(TypeList::size() <= 16), uint16_t,
-							if_condition_type_t<(TypeList::size() <= 32), uint32_t, uint64_t>>>;
-	};
-	template<typename TypeList>
-	using select_storage_type_t = typename select_storage_type<TypeList>::type;
-
 
 	//=========================================================================
 	// TypeList: struct to handle list of types
@@ -95,7 +79,7 @@ namespace Leaf::mp
 	struct TypeListTraits
 	{
 		//Type of the mask to use (uint8_t, uint16_t...) depending on the size of the list;
-		using mask_type = select_storage_type_t<TypeList>;
+		using mask_type = select_ustorage_type_t<TypeList::size()>;
 
 		/**
 		 * @brief Get the size of the TypeListTraits

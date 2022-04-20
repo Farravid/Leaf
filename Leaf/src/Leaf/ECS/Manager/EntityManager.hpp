@@ -1,7 +1,7 @@
 /**
  * @file EntityManager.hpp
- * @author OcachoGames-David (ocachogames@gmail.com)
- * @brief Manager for Ocacho entities.
+ * @author David (davidmg103@gmail.com)
+ * @brief Manager for Leaf entities.
  *
  * This class holds all the implementation and logic behving creating, removing and managing entities.
  * Also provides a set of funtionalities to manage components and tags.
@@ -18,11 +18,12 @@
 
 #include "ComponentStorage.hpp"
 #include "ECS/Entity/BaseEntity.hpp"
+#include "Core/Functionality/NonCopyable.hpp"
 
 namespace Leaf::ecs
 {
 	template<typename CmpsList, typename SingletonCmpsList, typename TagsList, size_t Capacity = 1000>
-	struct EntityManager
+	struct EntityManager : func::NonCopyable
 	{
 		//=========================================================================
 		// Flags matching for the update
@@ -221,9 +222,6 @@ namespace Leaf::ecs
 			 * @brief Create an EntityManager 
 			 */
 			explicit EntityManager(const size_t p_numEntities = 100);
-
-			//Making this class non copiable
-			NON_COPIABLE_CLASS(EntityManager)
 
 			//=========================================================================
 			// For all loop implementations public

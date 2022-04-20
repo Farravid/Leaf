@@ -34,18 +34,18 @@ namespace Leaf {
 #if LF_DEBUG
 
 	/*Engine log macros - This should be used by the engine*/
-	#define LF_ENGINE_LOG_DEBUG(...)     	SPDLOG_LOGGER_TRACE(Leaf::Log::getEngineLogger(),__VA_ARGS__);
-	#define LF_ENGINE_LOG_INFO(...)     	SPDLOG_LOGGER_INFO(Leaf::Log::getEngineLogger(),__VA_ARGS__);
-	#define LF_ENGINE_LOG_WARN(...)   		SPDLOG_LOGGER_WARN(Leaf::Log::getEngineLogger(),__VA_ARGS__);
-	#define LF_ENGINE_LOG_ERROR(...)    	SPDLOG_LOGGER_ERROR(Leaf::Log::getEngineLogger(),__VA_ARGS__);
-	#define LF_ENGINE_LOG_CRITICAL(...)   	SPDLOG_LOGGER_CRITICAL(Leaf::Log::getEngineLogger(),__VA_ARGS__);
+	#define LF_ENGINE_LOG_DEBUG(...)     	SPDLOG_LOGGER_TRACE(Leaf::Log::getEngineLogger(),__VA_ARGS__)
+	#define LF_ENGINE_LOG_INFO(...)     	SPDLOG_LOGGER_INFO(Leaf::Log::getEngineLogger(),__VA_ARGS__)
+	#define LF_ENGINE_LOG_WARN(...)   		SPDLOG_LOGGER_WARN(Leaf::Log::getEngineLogger(),__VA_ARGS__)
+	#define LF_ENGINE_LOG_ERROR(...)    	SPDLOG_LOGGER_ERROR(Leaf::Log::getEngineLogger(),__VA_ARGS__)
+	#define LF_ENGINE_LOG_CRITICAL(...)   	SPDLOG_LOGGER_CRITICAL(Leaf::Log::getEngineLogger(),__VA_ARGS__)
 
 	/*Game log macros - This should be used by the game application*/
-	#define OG_GAME_LOG_DEBUG(...)     		SPDLOG_LOGGER_TRACE(Leaf::Log::getGameLogger(),__VA_ARGS__);
-	#define OG_GAME_LOG_INFO(...)     		SPDLOG_LOGGER_INFO(Leaf::Log::getGameLogger(),__VA_ARGS__);
-	#define OG_GAME_LOG_WARN(...)     		SPDLOG_LOGGER_WARN(Leaf::Log::getGameLogger(),__VA_ARGS__);
-	#define OG_GAME_LOG_ERROR(...)    		SPDLOG_LOGGER_ERROR(Leaf::Log::getGameLogger(),__VA_ARGS__);
-	#define OG_GAME_LOG_CRITICAL(...)   	SPDLOG_LOGGER_CRITICAL(Leaf::Log::getGameLogger(),__VA_ARGS__);
+	#define LF_GAME_LOG_DEBUG(...)     		SPDLOG_LOGGER_TRACE(Leaf::Log::getGameLogger(),__VA_ARGS__)
+	#define LF_GAME_LOG_INFO(...)     		SPDLOG_LOGGER_INFO(Leaf::Log::getGameLogger(),__VA_ARGS__)
+	#define LF_GAME_LOG_WARN(...)     		SPDLOG_LOGGER_WARN(Leaf::Log::getGameLogger(),__VA_ARGS__)
+	#define LF_GAME_LOG_ERROR(...)    		SPDLOG_LOGGER_ERROR(Leaf::Log::getGameLogger(),__VA_ARGS__)
+	#define LF_GAME_LOG_CRITICAL(...)   	SPDLOG_LOGGER_CRITICAL(Leaf::Log::getGameLogger(),__VA_ARGS__)
 
 #else
 

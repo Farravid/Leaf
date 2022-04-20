@@ -1,6 +1,6 @@
 /**
  * @file SystemManager.hpp
- * @author OcachoGames-David (ocachogames@gmail.com)
+ * @author David (davidmg103@gmail.com)
  * @brief Manager for our systems.
  * This class holds the manage to instantiate and loop through the game systems.
  * The class has an array of update function pointers in order to call all the updates

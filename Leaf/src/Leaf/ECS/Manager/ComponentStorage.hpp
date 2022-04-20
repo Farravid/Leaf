@@ -1,6 +1,6 @@
 /**
  * @file ComponentStorage.hpp
- * @author OcachoGames-David (ocachogames@gmail.com)
+ * @author David (davidmg103@gmail.com)
  * @brief Class where all the components from the entities are storaged
  * 
  * Besides, this class holds all the implementation for managing components.
@@ -18,12 +18,11 @@
 #include "Metaprogramming/Metaprogramming.hpp"
 #include "Core/Functionality/NonCopyable.hpp"
 #include "DataStructures/SlotMap.hpp"
-#include "Macros/ClassesMacros.hpp"
 
 namespace Leaf::ecs
 {
 	template <typename CmpsList, typename SingletonCmpsList, std::size_t Capacity>
-	struct ComponentStorage : NonCopyable
+	struct ComponentStorage : func::NonCopyable
 	{
 		//=========================================================================
 		// Type list info
@@ -34,7 +33,7 @@ namespace Leaf::ecs
 		// Component storage type
 		//=========================================================================
 		template <typename T>
-		using StorageType 			= typename DataStructures::SlotMap<T, typename cmpsinfo::mask_type, Capacity>;
+		using StorageType 			= typename containers::SlotMap<T,Capacity>;
 		using Storage_t 			= mp::replace_all_list_t<std::tuple,StorageType,CmpsList>;
 		using SingletonStorage_t 	= mp::replace_list_t<std::tuple, SingletonCmpsList>; 
 

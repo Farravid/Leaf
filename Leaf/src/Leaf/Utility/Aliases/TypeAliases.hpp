@@ -1,6 +1,6 @@
 /**
  * @file TypeAliases.hpp
- * @author OcachoGames-David (ocachogames@gmail.com)
+ * @author David (davidmg103@gmail.com)
  * @brief Type aliases for using in the engine
  * @version 0.1
  * @date 2021-12-15

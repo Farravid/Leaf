@@ -1,6 +1,6 @@
 /**
  * @file TypeList.hpp
- * @author OcachoGames-David ( ocachogames@gmai.com)
+ * @author David (davidmg103@gmail.com)
  * @brief Common metaprogramming functions.
  * @version 0.1
  * @date 2022-02-14

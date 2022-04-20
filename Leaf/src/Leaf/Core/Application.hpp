@@ -1,11 +1,10 @@
 /**
  * @file Application.hpp
- * @author OcachoGames-David (ocachogames@gmail.com)
- * @brief Base application of Ocacho engine.
+ * @author David (davidmg103@gmail.com)
+ * @brief Base application of Leaf engine.
  *
  * Each game app should derive from Application.
  * To create a game the derived classes should implement ::createApplication
- * See NoGasRacingApp.cpp as an example
  * 
  * @version 0.1
  * @date 2021-12-07

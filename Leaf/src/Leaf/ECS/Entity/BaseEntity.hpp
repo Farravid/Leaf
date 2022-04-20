@@ -1,6 +1,6 @@
 /**
  * @file BaseEntity.hpp
- * @author OcachoGames-David (ocachogames@gmail.com)
+ * @author David (davidmg103@gmail.com)
  * @brief Base entity for our ECS.
  * 
  * The user of the engine can use this class as the entity or can derive from this class
@@ -35,7 +35,7 @@ namespace Leaf::ecs
 			// Components key storage
 			//=========================================================================
 			template <typename T>
-			using key_type_t 		= typename DataStructures::SlotMap<T,TypeMaskCmps,Capacity>::key_type;
+			using key_type_t 		= typename containers::SlotMap<T,Capacity>::key_type;
 			
 			using CmpKeysStorage_t 	= mp::replace_all_list_t<std::tuple,key_type_t,CmpsList>;
 

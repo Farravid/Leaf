@@ -1,7 +1,7 @@
 /**
  * @file EntryPoint.hpp
- * @author OcachoGames-David (ocachogames@gmail.com)
- * @brief Entry point of the Ocacho engine.
+ * @author David (davidmg103@gmail.com)
+ * @brief Entry point of the Leaf engine.
  * 
  * @version 0.1
  * @date 2021-12-07

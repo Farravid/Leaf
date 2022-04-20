@@ -1,7 +1,7 @@
 /**
  * @file SystemBase.hpp
- * @author OcachoGames-David (ocachogames@gmail.com)
- * @brief Base system for Ocacho Engine
+ * @author David (davidmg103@gmail.com)
+ * @brief Base system from ECS for Leaf engine
  * 
  * All the systems handled by the SystemManager should derive from this class with CRTP
  * 

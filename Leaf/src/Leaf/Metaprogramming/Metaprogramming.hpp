@@ -1,6 +1,6 @@
 /**
  * @file Metaprogramming.hpp
- * @author OcachoGames-David (ocachogames@gmail.com)
+ * @author David (davidmg103@gmail.com)
  * @brief Metaprogramming header for including.
  * Including this header you will have access to all the metaprogramming functionalities.
  * @version 0.1

@@ -1,34 +1,26 @@
-/**
- * @file SlotMap.hpp
- * @author Ocacho Games - Antonio (ocachogames@gmail.com)
- * @brief This class contains the interface for using the Slot Map data structure.
- * @version 0.1
- * @date 2022-02-03
- * 
- * @copyright Copyright (c) 2022
- * 
- */
-
 #pragma once
 
-namespace Leaf::DataStructures
+#include "Metaprogramming/Metaprogramming.hpp"
+#include "Core/Concepts/Concepts.hpp"
+
+namespace Leaf::containers
 {
-	template<typename DATA_T, typename INDEX_T = uint32_t, size_t Capacity = 100>
+	template<typename DataType, size_t Capacity = 100>
+	requires Copyable<DataType>
 	class SlotMap
 	{
 		public:
 			//Type of the data that is going to be saved in the data_ array
-			using value_type = DATA_T;
+			using value_type = DataType;
 			//Type used for the index values
-			using index_type = INDEX_T;
+			using index_type = mp::select_ustorage_type_t<Capacity>;
 			//Type used for the generation values
 			using gen_type	 = index_type;
 			//Type used for the key values. The id points to the data_ and erase_ position corresponding to this slot.
-			using key_type	 = struct {index_type id; gen_type gen; };
+			using key_type	 = struct { index_type id; gen_type gen; };
 
-			//Iterators for the data_ array
-			using iterator	= DATA_T*;
-			using citerator = DATA_T const*;
+			using iterator	= DataType*;
+			using citerator = DataType const*;
 		
 		private:
 			//Number that signals the first free slot in the slotMap
@@ -50,7 +42,7 @@ namespace Leaf::DataStructures
 			 * @brief Constructor of the slotMap. Initializes the slotMap with the provided Capacity.
 			 * 
 			 */
-			explicit constexpr SlotMap();
+			explicit constexpr SlotMap() ;
 
 		private:
 			//=========================================================================
@@ -62,7 +54,7 @@ namespace Leaf::DataStructures
 			 * Initializes the keys of each slot.
 			 * 
 			 */
-			constexpr void freelist_init() noexcept;
+			constexpr void init() noexcept;
 
 			/**
 			 * @brief Frees the slot indicated by p_key.
@@ -101,51 +93,11 @@ namespace Leaf::DataStructures
 			[[nodiscard]] constexpr index_type allocate();
 
 		public:
-			//=========================================================================
-			//PUBLIC METHODS 
-			//=========================================================================
 
-			/**
-			 * @brief Iterator to the first element of the data_ array
-			 * 
-			 * @return constexpr iterator 
-			 */
-			[[nodiscard]] constexpr iterator begin() noexcept;
-
-			/**
-			 * @brief Const Iterator to the first element of the data_ array
-			 * 
-			 * @return constexpr iterator 
-			 */
-			[[nodiscard]] constexpr citerator begin() const noexcept;
-
-			/**
-			 * @brief Const iterator to the first element of the data_ array
-			 * 
-			 * @return constexpr citerator 
-			 */
-			[[nodiscard]] constexpr citerator cbegin() const noexcept;
-
-			/**
-			 * @brief Iterator to the last element of the data_ array
-			 * 
-			 * @return constexpr iterator 
-			 */
-			[[nodiscard]] constexpr iterator end() noexcept;
-
-			/**
-			 * @brief Const Iterator to the last element of the data_ array
-			 * 
-			 * @return constexpr iterator 
-			 */
-			[[nodiscard]] constexpr citerator end() const noexcept;
-
-			/**
-			 * @brief Const iterator to the last element of the data_ array
-			 * 
-			 * @return constexpr citerator 
-			 */
-			[[nodiscard]] constexpr citerator cend() const noexcept;
+			[[nodiscard]] constexpr iterator begin() noexcept { return &data_[0]; }
+			[[nodiscard]] constexpr citerator cbegin() const noexcept { return &data_[0]; }
+			[[nodiscard]] constexpr iterator end() noexcept { return begin() + size_; }
+			[[nodiscard]] constexpr citerator cend() const noexcept { return begin() + size_; }
 
 			/**
 			 * @brief Returns a referece of the component (or value) saved in the data_ array
@@ -171,14 +123,15 @@ namespace Leaf::DataStructures
 			 * 
 			 * @return constexpr index_type 
 			 */
-			[[nodiscard]] constexpr index_type size() const noexcept;
+			[[nodiscard]] constexpr index_type size() const noexcept { return size_; }
 
 			/**
 			 * @brief Returns the capacity of the slotMap
 			 * 
 			 * @return constexpr size_t 
 			 */
-			[[nodiscard]] constexpr size_t capacity() const noexcept;
+			//TODO: Aqui podria meter un index_type tambien 
+			[[nodiscard]] constexpr size_t capacity() const noexcept { return Capacity; }
 
 			/**
 			 * @brief Method used to insert an element in the slotMap.
@@ -200,7 +153,7 @@ namespace Leaf::DataStructures
 			 * @brief Method used to clear the slots_ array and initilize again its slots.
 			 * 
 			 */
-			constexpr void clear() noexcept;
+			constexpr void clear() noexcept { init(); };
 
 			/**
 			 * @brief Method used to erase an slot element from the slotMap
@@ -208,7 +161,7 @@ namespace Leaf::DataStructures
 			 * @param p_key Key used to find the slot we want to erase.
 			 * @return Returns true if the delete action is correct, false otherwise.
 			 */
-			constexpr uint8_t erase(key_type p_key) noexcept;
+			constexpr bool erase(key_type p_key) noexcept;
 	};
 }
 
