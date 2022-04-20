@@ -13,6 +13,7 @@ Makefile
 **.vcxproj
 **.vcxproj.filters
 **.vcxproj.user
+**.editorconfig
 
 ### premake-gmake ###
 Makefile
