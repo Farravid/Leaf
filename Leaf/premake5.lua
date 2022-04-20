@@ -32,6 +32,12 @@ project "Leaf"
 		"imgui"
 	}
 
+filter "system:Windows"
+	defines "LF_WINDOWS"
+	
+filter "system:Unix"
+	defines "LF_LINUX"
+
 filter "configurations:Debug"
 	defines "LF_DEBUG"
 	runtime "Debug"

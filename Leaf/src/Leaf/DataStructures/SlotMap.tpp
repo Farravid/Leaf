@@ -1,4 +1,4 @@
-#include "Utility/Log/Log.hpp"
+#include "Utility/Debug/Debug.hpp"
 
 namespace Leaf::containers
 {
@@ -88,7 +88,7 @@ namespace Leaf::containers
 	SlotMap<DataType, Capacity>::allocate()
 	{
 		if (size_ >= Capacity) std::out_of_range("Slotmap size bigger than Capacity");
-		//LF_ENGINE_ASSERT(freelist_ < Capacity);
+		LF_ENGINE_ASSERT(freelist_ < Capacity, "There is no space in the Slotmap");
 
 		//Reserve slot
 		auto slotID = freelist_;
@@ -113,7 +113,7 @@ namespace Leaf::containers
 	constexpr typename SlotMap<DataType, Capacity>::value_type&
 	SlotMap<DataType, Capacity>::operator[](const key_type p_key) noexcept
 	{
-		//TODO: Implement nice asserts
+		//TODO: Implement only one method
 		LF_ENGINE_ASSERT(is_valid(p_key), "Invalid Key! Trying to access an invalid position");
 
 		auto& slotID = slots_[p_key.id].id;
@@ -128,7 +128,6 @@ namespace Leaf::containers
 	constexpr typename SlotMap<DataType, Capacity>::value_type const&
 	SlotMap<DataType, Capacity>::operator[](const key_type p_key) const noexcept
 	{
-		//TODO: Implement nice asserts
 		LF_ENGINE_ASSERT(is_valid(p_key), "Invalid Key! Trying to access an invalid position");
 
 		auto& slotID = slots_[p_key.id].id;

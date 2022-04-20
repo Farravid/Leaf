@@ -1,4 +1,4 @@
-#include "Utility/Log/Log.hpp"
+#include "Utility/Debug/Debug.hpp"
 
 struct NameDebugComponent;
 

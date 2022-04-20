@@ -9,10 +9,19 @@ namespace Leaf
 	{
 		s_engineLogger = spdlog::stdout_color_mt("ENGINE");
 		s_engineLogger->set_level(spdlog::level::trace);
+#if LF_LOG_EXTENDED
 		s_engineLogger->set_pattern("[%s {%#}] %n: %v%$");
-
+#else
+		s_engineLogger->set_pattern("%n: %v%$");
+#endif
+		
 		s_gameLogger = spdlog::stdout_color_mt("GAME");
 		s_gameLogger->set_level(spdlog::level::trace);
+#if LF_LOG_EXTENDED
 		s_gameLogger->set_pattern("[%s {%#}] %n: %v%$");
+#else
+		s_gameLogger->set_pattern("%n: %v%$");
+#endif
+
 	}
 }

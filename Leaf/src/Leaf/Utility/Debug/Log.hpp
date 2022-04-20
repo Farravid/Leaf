@@ -49,9 +49,6 @@ namespace Leaf {
 
 #else
 
-	#define LOG_SIMPLE_OUTPUT
-	#define LOG_EXTENDED_OUTPUT
-
 	#define LF_ENGINE_LOG_DEBUG(...)     	
 	#define LF_ENGINE_LOG_INFO(...)     	
 	#define LF_ENGINE_LOG_WARN(...)     	
