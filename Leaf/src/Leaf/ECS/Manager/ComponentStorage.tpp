@@ -9,7 +9,7 @@ namespace Leaf::ecs
 		auto& slotMap = std::get< StorageType<CMP> >(components_);
 		auto key = slotMap.push_back(CMP{std::forward<ConstructorParams>(p_params)...});
 	
-		return std::tuple{key, &(slotMap[key])};
+		return std::tuple{ key, &(slotMap[key]) };
 	}
 
 	//-------------------------------------------------------------------------
@@ -30,7 +30,7 @@ namespace Leaf::ecs
 
 	template <typename CmpsList, typename SingletonCmpsList, std::size_t Capacity>
 	template<typename CMP>
-	static constexpr auto&
+	constexpr auto&
 	ComponentStorage<CmpsList,SingletonCmpsList,Capacity>::
 	getComponent_impl(auto* self, auto p_slotKey) noexcept
 	{

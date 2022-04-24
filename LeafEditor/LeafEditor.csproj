@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFramework>net6.0</TargetFramework>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug-windows-x64\LeafEditor\</OutputPath>
+    <IntermediateOutputPath>..\bin-obj\Debug-windows-x64\LeafEditor\</IntermediateOutputPath>
+    <DefineConstants>LF_WINDOWS;LF_DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release-windows-x64\LeafEditor\</OutputPath>
+    <IntermediateOutputPath>..\bin-obj\Release-windows-x64\LeafEditor\</IntermediateOutputPath>
+    <DefineConstants>LF_WINDOWS;LF_RELEASE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <Reference Include="Microsoft.CodeAnalysis.CSharp.NetAnalyzers" />
+    <Reference Include="Microsoft.CodeAnalysis.NetAnalyzers" />
+    <Reference Include="System.Text.Json.SourceGeneration" />
+    <Reference Include="Microsoft.NETCore.APP" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <Reference Include="Microsoft.CodeAnalysis.CSharp.NetAnalyzers" />
+    <Reference Include="Microsoft.CodeAnalysis.NetAnalyzers" />
+    <Reference Include="System.Text.Json.SourceGeneration" />
+    <Reference Include="Microsoft.NETCore.APP" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="src\App.axaml.cs" />
+    <Compile Include="src\Program.cs" />
+    <Compile Include="src\ViewLocator.cs" />
+    <Compile Include="src\ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="src\ViewModels\ViewModelBase.cs" />
+    <Compile Include="src\Views\MainWindow.axaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="0.10.13"/>
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.13"/>
+    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.13"/>
+    <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.13"/>
+    <PackageReference Include="XamlNameReferenceGenerator" Version="1.3.4"/>
+  </ItemGroup>
+</Project>

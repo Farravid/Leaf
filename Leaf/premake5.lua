@@ -9,6 +9,9 @@ project "Leaf"
 
 	pchheader "lfpch.hpp"
 	pchsource "src/lfpch.cpp"
+
+	callingconvention ("FastCall")
+	floatingpoint "Fast"
 	
 	files
 	{
