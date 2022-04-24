@@ -1,6 +1,7 @@
 # Directories
 bin
 bin-obj
+obj
 
 # Files
 *.user
@@ -14,6 +15,7 @@ Makefile
 **.vcxproj.filters
 **.vcxproj.user
 **.editorconfig
+**.csproj
 
 ### premake-gmake ###
 Makefile
