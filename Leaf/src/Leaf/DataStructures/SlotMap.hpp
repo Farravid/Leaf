@@ -6,7 +6,7 @@
 namespace Leaf::containers
 {
 	template<typename DataType, size_t Capacity = 100>
-	requires Copyable<DataType>
+	requires copyable<DataType>
 	class SlotMap
 	{
 		public:

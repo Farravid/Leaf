@@ -3,7 +3,7 @@
 namespace Leaf::containers
 {
 	template<typename DataType, size_t Capacity>
-	requires Copyable<DataType>
+	requires copyable<DataType>
 	constexpr SlotMap<DataType, Capacity>::SlotMap()
 	{
 		init();
@@ -13,7 +13,7 @@ namespace Leaf::containers
 	//-------------------------------------------------------------------------
 
 	template<typename DataType, size_t Capacity>
-	requires Copyable<DataType>
+	requires copyable<DataType>
 	constexpr void 
 	SlotMap<DataType, Capacity>::init() noexcept
 	{
@@ -28,7 +28,7 @@ namespace Leaf::containers
 	//-------------------------------------------------------------------------
 
 	template<typename DataType, size_t Capacity>
-	requires Copyable<DataType>
+	requires copyable<DataType>
 	constexpr void 
 	SlotMap<DataType, Capacity>::free(key_type p_key) noexcept
 	{
@@ -56,7 +56,7 @@ namespace Leaf::containers
 	//-------------------------------------------------------------------------
 
 	template<typename DataType, size_t Capacity>
-	requires Copyable<DataType>
+	requires copyable<DataType>
 	constexpr void 
 	SlotMap<DataType, Capacity>::copy_last(index_type p_id) noexcept
 	{
@@ -69,7 +69,7 @@ namespace Leaf::containers
 	//-------------------------------------------------------------------------
 
 	template<typename DataType, size_t Capacity>
-	requires Copyable<DataType>
+	requires copyable<DataType>
 	constexpr uint8_t 
 	SlotMap<DataType, Capacity>::is_valid(key_type p_key) const noexcept
 	{
@@ -83,7 +83,7 @@ namespace Leaf::containers
 	//-------------------------------------------------------------------------
 
 	template<typename DataType, size_t Capacity>
-	requires Copyable<DataType>
+	requires copyable<DataType>
 	constexpr typename SlotMap<DataType, Capacity>::index_type 
 	SlotMap<DataType, Capacity>::allocate()
 	{
@@ -109,7 +109,7 @@ namespace Leaf::containers
 	//-------------------------------------------------------------------------
 
 	template<typename DataType, size_t Capacity>
-	requires Copyable<DataType>
+	requires copyable<DataType>
 	constexpr typename SlotMap<DataType, Capacity>::value_type&
 	SlotMap<DataType, Capacity>::operator[](const key_type p_key) noexcept
 	{
@@ -124,7 +124,7 @@ namespace Leaf::containers
 	//-------------------------------------------------------------------------
 
 	template<typename DataType, size_t Capacity>
-	requires Copyable<DataType>
+	requires copyable<DataType>
 	constexpr typename SlotMap<DataType, Capacity>::value_type const&
 	SlotMap<DataType, Capacity>::operator[](const key_type p_key) const noexcept
 	{
@@ -138,7 +138,7 @@ namespace Leaf::containers
 	//-------------------------------------------------------------------------
 
 	template<typename DataType, size_t Capacity>
-	requires Copyable<DataType>
+	requires copyable<DataType>
 	constexpr typename SlotMap<DataType, Capacity>::key_type 
 	SlotMap<DataType, Capacity>::push_back(value_type&& p_data)
 	{
@@ -155,7 +155,7 @@ namespace Leaf::containers
 	//-------------------------------------------------------------------------
 
 	template<typename DataType, size_t Capacity>
-	requires Copyable<DataType>
+	requires copyable<DataType>
 	constexpr typename SlotMap<DataType, Capacity>::key_type 
 	SlotMap<DataType, Capacity>::push_back(value_type const& p_data)
 	{
@@ -166,7 +166,7 @@ namespace Leaf::containers
 	//-------------------------------------------------------------------------
 
 	template<typename DataType, size_t Capacity>
-	requires Copyable<DataType>
+	requires copyable<DataType>
 	constexpr bool
 	SlotMap<DataType, Capacity>::erase(key_type p_key) noexcept
 	{
