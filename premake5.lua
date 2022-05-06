@@ -16,7 +16,7 @@ group ""
 
 include "Leaf"
 include "LeafEditor"
-include "LeafGame"
+--include "LeafGame"
 
 -- Clean ACTION --
 newaction
