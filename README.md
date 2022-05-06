@@ -1,6 +1,8 @@
 # Leaf 🌿 - [![License](https://img.shields.io/github/license/Farravid/Leaf.svg)](https://github.com/Farravid/Leaf/blob/main/LICENSE) ![Platforms](https://img.shields.io/badge/platforms-Windows-blue) -
-
+ 
 Leaf is a cross-building data oriented engine developed in my spare time in order to improve my skills and knowledge about game engine architectures.
+
+The targets of this project are pretended to be experienced programmers. This means, some features can have a less family friendly interface in order to achieve more performance. 
 
 It's written in modern C++20.
 
