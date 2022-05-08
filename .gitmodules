@@ -8,6 +8,6 @@
 [submodule "Leaf/vendor/spdlog"]
 	path = Leaf/vendor/spdlog
 	url = https://github.com/Farravid/spdlog
-[submodule "LeafEditor/vendor/premake-qt"]
-	path = lua/premake-qt
+[submodule "Premake/lua/premake-qt"]
+	path = Premake/lua/premake-qt
 	url = https://github.com/Farravid/premake-qt

@@ -36,3 +36,13 @@ filter "configurations:Release"
 	defines "LF_RELEASE"
 	runtime "Release"
 	optimize "full"
+
+newaction
+{
+	trigger     =   "clean_game",
+	description =	"Clean the generated project files and temporary objects",
+	execute		=	function()
+		os.remove("LeafGame/*.vcxproj.*")
+		os.remove("LeafGame/Makefile")
+	end
+}

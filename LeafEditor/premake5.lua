@@ -1,11 +1,19 @@
+require "premake-qt/qt"
+local qt = premake.extensions.qt
+
 project "LeafEditor"
-	kind "ConsoleApp"
+	kind "WindowedApp"
 	language "C++"
 	cppdialect "C++20"
 	staticruntime "off"
+	entrypoint "mainCRTStartup"
 
-	targetdir   ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
+	targetdir   ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}" )
 	objdir      ("%{wks.location}/bin-obj/" .. outputdir .. "/%{prj.name}")
+
+	qt.enable()
+	qtmodules { "core", "gui", "widgets", "opengl" }
+	qtprefix "Qt6"
 
 	files
 	{
@@ -20,44 +28,65 @@ project "LeafEditor"
 		"%{wks.location}/Leaf/src",
 		"%{wks.location}/Leaf/src/Leaf",
 		"%{IncludeDir.spdlog}",
-		"C:/Qt/6.3.0/mingw_64/include/"
 	}
 
 	links
 	{
-		"Leaf",
-		"Qt6Widgets",
-		"Qt6Gui",
-		"Qt6Core"
+		"Leaf"
 	}
 
-	postbuildcommands
-	{
-		"mkdir %{wks.location}/bin/" .. outputdir .. "/%{prj.name}/platforms",
-		"{COPY} C:/Qt/6.3.0/msvc2019_64/plugins/platforms %{wks.location}/bin/" .. outputdir .. "/%{prj.name}/platforms",
-		"{COPY} C:/Qt/6.3.0/msvc2019_64/bin/Qt6Core.dll %{wks.location}/bin/" .. outputdir .. "/%{prj.name}",
-		"{COPY} C:/Qt/6.3.0/msvc2019_64/bin/Qt6Widgets.dll %{wks.location}/bin/" .. outputdir .. "/%{prj.name}",
-		"{COPY} C:/Qt/6.3.0/msvc2019_64/bin/Qt6Gui.dll %{wks.location}/bin/" .. outputdir .. "/%{prj.name}"
-	}
-
-filter "system:Windows"
+filter "system:windows"
 	defines "LF_WINDOWS"
+	qtpath "C:/Qt/6.3.0/msvc2019_64"
 	
-	
-filter "system:Unix"
+filter "system:linux"
 	defines "LF_LINUX"
 
 filter "configurations:Debug"
+	kind "ConsoleApp"
 	defines "LF_DEBUG"
 	runtime "Debug"
 	symbols "on"
+	qtsuffix "d"
+	postbuildcommands
+	{
+		"{MKDIR} %{cfg.buildtarget.directory}/platforms",
+		"{COPY} %{cfg.qtpath}/plugins/platforms %{cfg.buildtarget.directory}/platforms",
+		"{COPY} %{cfg.qtpath}/bin/Qt6Cored.dll %{cfg.buildtarget.directory}",
+		"{COPY} %{cfg.qtpath}/bin/Qt6Widgetsd.dll %{cfg.buildtarget.directory}",
+		"{COPY} %{cfg.qtpath}/bin/Qt6Guid.dll %{cfg.buildtarget.directory}"
+	}
 
 filter "configurations:Release"
 	defines "LF_RELEASE"
 	runtime "Release"
 	optimize "full"
-
+	postbuildcommands
+	{
+		"{MKDIR} %{cfg.buildtarget.directory}/platforms",
+		"{COPY} %{cfg.qtpath}/plugins/platforms %{cfg.buildtarget.directory}/platforms",
+		"{COPY} %{cfg.qtpath}/bin/Qt6Core.dll %{cfg.buildtarget.directory}",
+		"{COPY} %{cfg.qtpath}/bin/Qt6Widgets.dll %{cfg.buildtarget.directory}",
+		"{COPY} %{cfg.qtpath}/bin/Qt6Gui.dll %{cfg.buildtarget.directory}"
+	}
+	
+filter {"system:linux", "configurations:not Debug"}
+	buildoptions { "-mwindow" }
+	
 filter "action:vs2022"
 	buildoptions "/Zc:__cplusplus "
-	libdirs { "C:/Qt/6.3.0/msvc2019_64/lib" }
+	qtpath "C:/Qt/6.3.0/msvc2019_64"
+
+filter "action:gmake2"
+	qtpath "C:/Qt/6.3.0/mingw_64"
+
+newaction
+{
+	trigger     =   "clean_editor",
+	description =	"Clean the generated project files and temporary objects",
+	execute		=	function()
+		os.remove("LeafEditor/*.vcxproj.*")
+		os.remove("LeafEditor/Makefile")
+	end
+}
 

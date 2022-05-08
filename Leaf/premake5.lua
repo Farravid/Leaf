@@ -23,7 +23,7 @@ project "Leaf"
 	includedirs
 	{
 		"src",
-		"src/Leaf",
+		"src/%{prj.name}",
 		"%{IncludeDir.glfw}",
 		"%{IncludeDir.imgui}",
 		"%{IncludeDir.spdlog}"
@@ -50,3 +50,18 @@ filter "configurations:Release"
 	defines "LF_RELEASE"
 	runtime "Release"
 	optimize "full"
+
+newaction
+{
+	trigger     =   "clean_engine",
+	description =	"Clean the generated project files and temporary objects",
+	execute		=	function()
+		print("==== Cleaning vendor/glfw ====")
+			os.execute([["Premake\premake5 clean_glfw"]])
+		print("==== Cleaning vendor/imgui ====")
+			os.execute([["Premake\premake5 clean_imgui"]])
+
+			os.remove("Leaf/*.vcxproj.*")
+			os.remove("Leaf/Makefile")
+	end
+}

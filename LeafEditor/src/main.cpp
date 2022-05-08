@@ -1,6 +1,6 @@
-#include <QtWidgets/QApplication>
-#include <QtWidgets/QProgressBar>
-#include <QtWidgets/QSlider>
+#include <QApplication>
+#include <QProgressBar>
+#include <QSlider>
 
 int main(int argc, char **argv)
 {

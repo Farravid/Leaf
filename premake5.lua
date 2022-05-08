@@ -2,8 +2,9 @@ include "Dependencies.lua"
 
 workspace "LeafEngine"
 	startproject "LeafEditor"
+	architecture "x64"
 
-	configurations { "Debug", "Release" }
+	configurations { "Debug", "Release", "Shipping" }
 	platforms { "x64" }
 	flags { "MultiProcessorCompile" }
 	
@@ -16,7 +17,7 @@ group ""
 
 include "Leaf"
 include "LeafEditor"
---include "LeafGame"
+include "LeafGame"
 
 -- Clean ACTION --
 newaction
@@ -25,18 +26,14 @@ newaction
 	description =	"Clean the generated project files and temporary objects",
 	execute		=	function()
 		print("==== Cleaning Leaf ====")
-			os.remove("Leaf/Leaf.vcxproj")
-			os.remove("Leaf/Leaf.vcxproj.filters")
-			os.remove("Leaf/Leaf.vcxproj.user")
-			os.remove("Leaf/Makefile")
+		os.execute([["Premake\premake5 clean_engine"]])
+		
 		print("==== Cleaning Leaf Editor ====")
-			os.rmdir("LeafEditor/bin")
-			os.rmdir("LeafEditor/obj")
-			os.remove("LeafEditor/LeafEditor.csproj")
+		os.execute([["Premake\premake5 clean_editor"]])
+
 		print("==== Cleaning Leaf Game ====")
-			os.remove("LeafGame/LeafGame.vcxproj")
-			os.remove("LeafGame/LeafGame.vcxproj.user")
-			os.remove("LeafGame/Makefile")
+		os.execute([["Premake\premake5 clean_game"]])
+		
 		print("==== Cleaning Engine ====")
 			os.rmdir("./bin")
 			os.rmdir("./bin-obj")
